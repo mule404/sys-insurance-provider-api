@@ -31,6 +31,23 @@
 				<extensions>true</extensions>
 				<configuration>
 					<classifier>mule-application</classifier>
+					 <cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>4.4.0</muleVersion>
+						<username>apiseroB48ucase</username>
+						<password>apiseroB48ucase</password>
+						<environment>Sandbox</environment>
+						<applicationName>sys-insurance-provider</applicationName>
+						<businessGroup>apisero</businessGroup>
+						<workerType>micro</workerType>
+						<workers>1</workers>
+						<properties>
+							<anypoint.platform.config.analytics.agent.enabled>false</anypoint.platform.config.analytics.agent.enabled>
+							<anypoint.platform.client_id>ef959cfc6eca41ebaa836ed8b2586bba</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>A782BdFb10AC4Cd39366F5f2A31e7f18</anypoint.platform.client_secret>
+						</properties>
+						<objectStoreV2>true</objectStoreV2>
+					</cloudHubDeployment>
 				</configuration>
 			</plugin>
 		</plugins>
