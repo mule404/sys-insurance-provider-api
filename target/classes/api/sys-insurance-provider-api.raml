@@ -1,0 +1,27 @@
+#%RAML 1.0
+title: sys-insurance-provider-api
+
+
+traits:
+  client-id-required:
+    headers:
+      client_id:
+        type: string
+      client_secret:
+        type: string
+    responses:
+      401:
+        description: Unauthorized or invalid client application credentials
+      500:
+        description: Bad response from authorization server, or WSDL SOAP Fault error
+
+
+/insurer:
+  description: This is used to insurer details
+  get:
+    is: [client-id-required]
+    queryParameters:
+      insurerName:
+        type: string
+    responses:
+      

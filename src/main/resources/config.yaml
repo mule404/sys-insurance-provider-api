@@ -1,0 +1,14 @@
+jsonlogger:
+  applicationName: "sys-insurance-provider-api"
+  version: "v1"
+  
+mule:
+  env: "prod"
+
+
+external:
+ host: "localhost"
+ port: "8087"
+
+http:
+  port: "8088"

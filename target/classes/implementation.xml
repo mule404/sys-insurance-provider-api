@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json-logger="http://www.mulesoft.org/schema/mule/json-logger"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/json-logger http://www.mulesoft.org/schema/mule/json-logger/current/mule-json-logger.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="getInsuranceQuotationFlow" doc:id="ee502e15-a821-4ccd-9b44-0f9f8038ceda" >
+		<json-logger:logger doc:name="Logger" doc:id="9c96a4f9-34a7-4676-9e6b-f59f4e5ed91e" message='#["sysAPI insurance provider intiated" ++ now() as String]' config-ref="JSON_Logger_Config"/>
+		<http:request method="GET" doc:name="call Ext Insurance provider sys API" doc:id="94b144e1-35a9-451d-a008-861ff8f4c0d9" config-ref="HTTP_Request_configuration1" path="/api/insurerquotation" responseTimeout="1000000">
+			<http:headers ><![CDATA[#[output application/java
+---
+{
+	client_secret : 12345,
+	client_id : 1234
+}]]]></http:headers>
+			<http:query-params ><![CDATA[#[output application/java
+---
+{
+	insurerName : attributes.queryParams.insurerName
+}]]]></http:query-params>
+		</http:request>
+		<json-logger:logger doc:name="Logger" doc:id="5a4341f5-8a7d-48ca-afde-063983bed683" message='#["sysAPI insurance provider completed" ++ now() as String]' config-ref="JSON_Logger_Config"/>
+	</flow>
+</mule>
